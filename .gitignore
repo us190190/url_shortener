@@ -1,8 +1,2 @@
 
-url_shortener/__pycache__/
-sluggen/migrations/__pycache__/
-sluggen/__pycache__/
-compress/migrations/__pycache__/
-compress/__pycache__/
-analytics/migrations/__pycache__/
-analytics/__pycache__/
+*__pycache__*
