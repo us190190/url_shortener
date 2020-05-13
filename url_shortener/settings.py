@@ -29,12 +29,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    # 'django.contrib.sessions',
-    # 'django.contrib.messages',
-    # 'django.contrib.staticfiles',
     'rest_framework',
     'sluggen',
     'compress',
@@ -42,13 +38,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # 'django.middleware.security.SecurityMiddleware',
-    # 'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'url_shortener.urls'
@@ -143,5 +132,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Constants for all applications
-POPULATE_SLUGS_DB_BATCH_SIZE = 1000
+POPULATE_SLUGS_DB_BATCH_SIZE = 500
 SLUGS_IN_REDIS_COUNT = 200

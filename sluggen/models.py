@@ -10,7 +10,6 @@ redis_slugs_connection = get_redis_connection("slugs")
 
 
 class Slug(models.Model):
-    id = models.AutoField(primary_key=True)
     slug = models.CharField(unique=True, max_length=6)  # 26^6 308915776 unique values consisting of a-z
     created_at = models.DateTimeField(auto_now_add=True)
     consumed = models.BooleanField(default=False)
@@ -23,6 +22,7 @@ class Slug(models.Model):
 
         batch_size = settings.POPULATE_SLUGS_DB_BATCH_SIZE
         chunk_size = 500
+        total = batch_size
 
         while batch_size:
             slugs = []
@@ -38,24 +38,24 @@ class Slug(models.Model):
             time.sleep(5)  # sleep for 5 seconds
             batch_size -= chunk_size
 
-        return str(batch_size) + " slugs inserted in database successfully!"
+        return str(total) + " slugs inserted in database successfully!"
 
     @staticmethod
     def populate_slugs_in_redis(count=0):
 
         available_slugs = Slug.objects.filter(consumed=False)[:count]
         sleep_after = 200
-        count = 0
+        counter = 0
 
         for available_slug in available_slugs:
-            count += 1
+            counter += 1
             slug_value = available_slug.slug
             available_slug.consumed = True
             available_slug.save()
             redis_slugs_connection.rpush("available_slugs", slug_value)
-            if count == sleep_after:
+            if counter == sleep_after:
                 time.sleep(5)  # sleep for 5 seconds
-                count = 0
+                counter = 0
 
         return str(count) + " slugs inserted in redis successfully!"
 
