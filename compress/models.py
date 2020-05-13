@@ -1,4 +1,6 @@
+
 from django.db import models
+from django_redis import get_redis_connection
 
 
 class Url(models.Model):
@@ -11,5 +13,23 @@ class Url(models.Model):
     class Meta:
         db_table = "url"
 
+    @staticmethod
+    def get_url(slug):
+        redis_default_connection = get_redis_connection("default")
+        value = redis_default_connection.get(slug)
+        if value is None:
+            try:
+                url_data = Url.objects.get(slug=slug)
+            except Url.DoesNotExist:
+                return None
+            value = url_data.full_url
+            redis_default_connection.set(slug, value)
+        # TODO add data for total_access_count and date+hour level count
+        # TODO put this into service call
+        return value
+
+    @staticmethod
+    def get_suggestions(keyword, limit):
+        return Url.objects.filter(full_url__contains=keyword).order_by("-visited_total_count")[:int(limit)]
 
 

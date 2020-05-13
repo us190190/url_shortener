@@ -36,12 +36,9 @@ INSTALLED_APPS = [
     # 'django.contrib.messages',
     # 'django.contrib.staticfiles',
     'rest_framework',
-    # 'compress',
-    # 'analytics',
-    # 'sluggen',
-    'compress.apps.CompressConfig',
-    'analytics.apps.AnalyticsConfig',
-    'sluggen.apps.SluggenConfig',
+    'sluggen',
+    'compress',
+    'analytics'
 ]
 
 MIDDLEWARE = [
@@ -87,9 +84,24 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/",
+        "LOCATION": "redis://127.0.0.1:6379/10",
         "OPTIONS": {
-            "DB": 10,
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "us_"
+    },
+    "queue": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/11",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "us_"
+    },
+    "slugs": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/12",
+        "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
         },
         "KEY_PREFIX": "us_"
