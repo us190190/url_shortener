@@ -1,7 +1,8 @@
 
 from django.db import models
 from django_redis import get_redis_connection
-
+redis_default_connection = get_redis_connection("default")
+redis_stats_connection = get_redis_connection("stats")
 
 class Url(models.Model):
     id = models.AutoField(primary_key=True)
@@ -15,7 +16,7 @@ class Url(models.Model):
 
     @staticmethod
     def get_url(slug):
-        redis_default_connection = get_redis_connection("default")
+
         value = redis_default_connection.get(slug)
         if value is None:
             try:
@@ -24,6 +25,7 @@ class Url(models.Model):
                 return None
             value = url_data.full_url
             redis_default_connection.set(slug, value)
+
         # TODO add data for total_access_count and date+hour level count
         # TODO put this into service call
         return value

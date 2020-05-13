@@ -87,16 +87,14 @@ CACHES = {
         "LOCATION": "redis://127.0.0.1:6379/10",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
-        },
-        "KEY_PREFIX": "us_"
+        }
     },
-    "queue": {
+    "stats": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/11",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
-        },
-        "KEY_PREFIX": "us_"
+        }
     },
     "slugs": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -143,3 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Constants for all applications
+POPULATE_SLUGS_DB_BATCH_SIZE = 1000
+SLUGS_IN_REDIS_COUNT = 200
