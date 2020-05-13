@@ -33,7 +33,7 @@ class History(models.Model):
         now_utc = datetime.utcnow()
         current_hour = now_utc.hour
         Url = apps.get_model("compress", "Url")
-        for hour in range(current_hour+1):
+        for hour in range(current_hour):
             pattern = str(hour) + "_*"
             urls_stats = redis_stats_connection.keys(pattern)
             for url_stats in urls_stats:
