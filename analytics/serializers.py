@@ -6,7 +6,7 @@ class HistorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = History
-        fields = ('url_id',
+        fields = ('slug',
                   'created_date',
                   'created_hour',
                   'access_count')

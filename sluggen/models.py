@@ -16,6 +16,9 @@ class Slug(models.Model):
 
     class Meta:
         db_table = "slug"
+        indexes = [
+            models.Index(fields=["consumed"], name='consumed_idx'),
+        ]
 
     @staticmethod
     def generate_slugs_in_db():

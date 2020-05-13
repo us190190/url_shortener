@@ -14,6 +14,11 @@ class Url(models.Model):
 
     class Meta:
         db_table = "url"
+        indexes = [
+            models.Index(fields=["slug"], name='slug_idx'),
+            models.Index(fields=["full_url"], name='full_url_idx'),
+            models.Index(fields=["created_at"], name='created_at_idx'),
+        ]
 
     @staticmethod
     def get_url(slug):
