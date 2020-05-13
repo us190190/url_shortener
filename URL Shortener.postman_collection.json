@@ -15,7 +15,7 @@
 					"formdata": [
 						{
 							"key": "full_url",
-							"value": "https://github.com",
+							"value": "https://fb.me",
 							"type": "text"
 						}
 					],
@@ -44,7 +44,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{domain}}/api/fetch?slug=mxdhvP",
+					"raw": "{{domain}}/api/fetch?slug=XAyqYJ",
 					"host": [
 						"{{domain}}"
 					],
@@ -55,7 +55,7 @@
 					"query": [
 						{
 							"key": "slug",
-							"value": "mxdhvP"
+							"value": "XAyqYJ"
 						}
 					]
 				}
@@ -68,7 +68,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{domain}}/api/search?keyword=git",
+					"raw": "{{domain}}/api/search?keyword=fb",
 					"host": [
 						"{{domain}}"
 					],
@@ -84,7 +84,7 @@
 						},
 						{
 							"key": "keyword",
-							"value": "git"
+							"value": "fb"
 						}
 					]
 				}
@@ -97,7 +97,20 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{domain}}/api/stats?date=2020-05-13",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"stats"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2020-05-13"
+						}
+					]
 				}
 			},
 			"response": []
