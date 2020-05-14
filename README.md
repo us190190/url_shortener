@@ -41,7 +41,7 @@ Steps to get started:
 
 Now your application should start running on port 8000 on your localhost.
 
-Do refer the POSTMAN collection shared, to expedite the process. To do so, just set
+Do refer the POSTMAN collection _`URL Shortener.postman_collection.json`_, to expedite the process. To do so, just set
 an ENV value of `_domain_` to `_http://127.0.0.1:8000_` before requesting respective APIs.
 
 Few essential commands:
