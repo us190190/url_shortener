@@ -15,7 +15,7 @@ Consists of three applications:
 
 Few essential settings before starting the app have to configured in 
 
-`_url_shortener/url_shortener/settings.py_`
+`url_shortener/url_shortener/settings.py`
 
 `CACHES = `
 
@@ -34,32 +34,32 @@ requested shortened URLs, slugs, and stats of URLs accessed.
 Steps to get started:
 1. First we have to precompute the slugs using
 
-    `_python manage.py generate_slugs_in_db_` 
+    `python manage.py generate_slugs_in_db` 
 2. Store some slugs in Redis from database, to enable sluggen to provide an unused slug for each URL using
 
-    `_python manage.py populate_slugs_in_redis_`
+    `python manage.py populate_slugs_in_redis`
 3. Ready to launch the project, do it using
 
-    `_python manage.py runserver_`
+    `python manage.py runserver`
 
 Now your application should start running on port 8000 on your localhost.
 
-Do refer the POSTMAN collection _`URL Shortener.postman_collection.json`_, to expedite the process. To do so, just set
-an ENV value of `_domain_` to `_http://127.0.0.1:8000_` before requesting respective APIs.
+Do refer the POSTMAN collection `URL Shortener.postman_collection.json`, to expedite the process. To do so, just set
+an ENV value of `domain` to `http://127.0.0.1:8000` before requesting respective APIs.
 
 Few essential commands:
 1. To populate our database with fresh slugs, when we are running out of slugs. 
    This has to be put as a cron based on how frequently they are getting consumed.
 
-    `_python manage.py generate_slugs_in_db_` 
+    `python manage.py generate_slugs_in_db` 
 2. Sluggen will provide fresh slugs from Redis. To ensure Sluggen has sufficient slugs
    this again has to be put in cron.
 
-    `_python manage.py populate_slugs_in_redis_`
+    `python manage.py populate_slugs_in_redis`
 3. Since analytics is assumed to be a non essential service. We cab persist data 
    from Redis into database on hourly basis. Once persisted that data can be deleted from Redis. 
    Following is command to be scheduled hourly to fetch data of previous hour and persist that
    into database.
 
-    `_python manage.py persist_stats_from_redis_`
+    `python manage.py persist_stats_from_redis`
 
