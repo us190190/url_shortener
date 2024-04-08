@@ -23,10 +23,10 @@ This URL Shortener is a simple yet powerful service designed to shorten long URL
 
 `url_shortener/url_shortener/settings.py`
 
-``CACHES =
+`CACHES =
 DATABASES = 
 POPULATE_SLUGS_DB_BATCH_SIZE = 
-SLUGS_IN_REDIS_COUNT = ``
+SLUGS_IN_REDIS_COUNT = `
 
 Although, default values have been provided, you might need to update endpoint and credentials of Redis
 inside CACHES variable. Also, if you want to use a different database e.g. MySQL.
@@ -34,15 +34,12 @@ inside CACHES variable. Also, if you want to use a different database e.g. MySQL
 Inside redis, three separate databases have been taken for storing 
 requested shortened URLs, slugs, and stats of URLs accessed.
 
-## Steps to get started:
+## Steps to get started
 1. First we have to precompute the slugs using
-
     `python manage.py generate_slugs_in_db` 
 2. Store some slugs in Redis from database, to enable sluggen to provide an unused slug for each URL using
-
     `python manage.py populate_slugs_in_redis`
 3. Ready to launch the project, do it using
-
     `python manage.py runserver`
 
 Now your application should start running on port 8000 on your localhost.
@@ -50,19 +47,16 @@ Now your application should start running on port 8000 on your localhost.
 Do refer the POSTMAN collection `URL Shortener.postman_collection.json`, to expedite the process. To do so, just set
 an ENV value of `domain` to `http://127.0.0.1:8000` before requesting respective APIs.
 
-## Few essential commands:
+## Few essential commands
 1. To populate our database with fresh slugs, when we are running out of slugs. 
    This has to be put as a cron based on how frequently they are getting consumed.
-
     `python manage.py generate_slugs_in_db` 
 2. Sluggen will provide fresh slugs from Redis. To ensure Sluggen has sufficient slugs
    this again has to be put in cron.
-
     `python manage.py populate_slugs_in_redis`
 3. Since analytics is assumed to be a non essential service. We cab persist data 
    from Redis into database on hourly basis. Once persisted that data can be deleted from Redis. 
    Following is command to be scheduled hourly to fetch data of previous hour and persist that
    into database.
-
     `python manage.py persist_stats_from_redis`
 
