@@ -19,17 +19,14 @@ This URL Shortener is a simple yet powerful service designed to shorten long URL
 2. Sluggen: Store precomputed slugs in DB, and a subset of these slugs is kept in Redis
 3. Analytics: Maintain the access frequency of each URL
 
-## Essential settings before starting the app have to configured in 
-
-`url_shortener/url_shortener/settings.py`
-
+## Essential settings  
+Before starting the app have to configured in `url_shortener/url_shortener/settings.py`
 ```
 CACHES =
 DATABASES = 
 POPULATE_SLUGS_DB_BATCH_SIZE = 
 SLUGS_IN_REDIS_COUNT =
 ```
-
 Although, default values have been provided, you might need to update endpoint and credentials of Redis
 inside CACHES variable. Also, if you want to use a different database e.g. MySQL.
 
