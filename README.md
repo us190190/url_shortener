@@ -19,7 +19,7 @@ This URL Shortener is a simple yet powerful service designed to shorten long URL
 2. Sluggen: Store precomputed slugs in DB, and a subset of these slugs is kept in Redis
 3. Analytics: Maintain the access frequency of each URL
 
-## Essential settings  
+## Settings  
 Before starting the app have to configured in `url_shortener/url_shortener/settings.py`
 ```
 CACHES =
