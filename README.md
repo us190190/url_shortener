@@ -34,7 +34,7 @@ inside CACHES variable. Also, if you want to use a different database e.g. MySQL
 Inside redis, three separate databases have been taken for storing 
 requested shortened URLs, slugs, and stats of URLs accessed.
 
-Steps to get started:
+## Steps to get started:
 1. First we have to precompute the slugs using
 
     `python manage.py generate_slugs_in_db` 
@@ -50,7 +50,7 @@ Now your application should start running on port 8000 on your localhost.
 Do refer the POSTMAN collection `URL Shortener.postman_collection.json`, to expedite the process. To do so, just set
 an ENV value of `domain` to `http://127.0.0.1:8000` before requesting respective APIs.
 
-Few essential commands:
+## Few essential commands:
 1. To populate our database with fresh slugs, when we are running out of slugs. 
    This has to be put as a cron based on how frequently they are getting consumed.
 
