@@ -1,29 +1,32 @@
-**'URL shortener' app**
+# URL shortener
+This URL Shortener is a simple yet powerful service designed to shorten long URLs into more manageable and shareable links. It's built using Python and Django, providing a lightweight and efficient solution for generating short URLs on the fly.
 
-Features covered:
-1. Provide a URL and get a short URL
-2. Fetch full URL from the short URL
-3. Search for suggestions of a string based on stored URLs in the system
-4. Fetch access frequency of URLs for a particular day
+## Features covered
+- URL Shortening: Convert long URLs into short, easy-to-share links.
+- Customization: Optionally customize shortened URLs to make them more memorable.
+- Analytics: Track clicks and view statistics for each shortened URL e.g. access frequency of URLs for a particular day
+- API Integration: Integrate URL shortening functionality into other applications using the provided API endpoints.
+- Postman Collection: Interface for generating and managing shortened URLs.
 
-The project has been implemented using Django, Redis and SQLite.
+## Technologies used
+1. Python
+2. Django
+3. Redis
+4. MySQL
 
-Consists of three applications:
-1. compress (to minify the full URLs into short URLs or slugs)
-2. sluggen (to store precomputed slugs in DB, and a subset of these slugs is kept in Redis)
-3. analytics (to maintain the access frequency of each URL)
+## Services
+1. Compress: Minify the full URLs into short URLs or slugs
+2. Sluggen: Store precomputed slugs in DB, and a subset of these slugs is kept in Redis
+3. Analytics: Maintain the access frequency of each URL
 
-Few essential settings before starting the app have to configured in 
+## Essential settings before starting the app have to configured in 
 
 `url_shortener/url_shortener/settings.py`
 
-`CACHES = `
-
-`DATABASES = `
-
-`POPULATE_SLUGS_DB_BATCH_SIZE = `
-
-`SLUGS_IN_REDIS_COUNT = `
+``CACHES =
+DATABASES = 
+POPULATE_SLUGS_DB_BATCH_SIZE = 
+SLUGS_IN_REDIS_COUNT = ``
 
 Although, default values have been provided, you might need to update endpoint and credentials of Redis
 inside CACHES variable. Also, if you want to use a different database e.g. MySQL.
