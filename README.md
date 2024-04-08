@@ -47,13 +47,14 @@ Do refer the POSTMAN collection `URL Shortener.postman_collection.json`, to expe
 an ENV value of `domain` to `http://127.0.0.1:8000` before requesting respective APIs.
 
 ## Few essential commands
-1. To populate our database with fresh slugs, when we are running out of slugs. 
+1. Install depencencies using `pip install -r requirements.txt`
+2. To populate our database with fresh slugs, when we are running out of slugs. 
    This has to be put as a cron based on how frequently they are getting consumed.
     `python manage.py generate_slugs_in_db` 
-2. Sluggen will provide fresh slugs from Redis. To ensure Sluggen has sufficient slugs
+3. Sluggen will provide fresh slugs from Redis. To ensure Sluggen has sufficient slugs
    this again has to be put in cron.
     `python manage.py populate_slugs_in_redis`
-3. Since analytics is assumed to be a non essential service. We cab persist data 
+4. Since analytics is assumed to be a non essential service. We cab persist data 
    from Redis into database on hourly basis. Once persisted that data can be deleted from Redis. 
    Following is command to be scheduled hourly to fetch data of previous hour and persist that
    into database.
