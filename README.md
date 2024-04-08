@@ -23,10 +23,12 @@ This URL Shortener is a simple yet powerful service designed to shorten long URL
 
 `url_shortener/url_shortener/settings.py`
 
-`CACHES =
+```
+CACHES =
 DATABASES = 
 POPULATE_SLUGS_DB_BATCH_SIZE = 
-SLUGS_IN_REDIS_COUNT = `
+SLUGS_IN_REDIS_COUNT =
+```
 
 Although, default values have been provided, you might need to update endpoint and credentials of Redis
 inside CACHES variable. Also, if you want to use a different database e.g. MySQL.
@@ -36,11 +38,11 @@ requested shortened URLs, slugs, and stats of URLs accessed.
 
 ## Steps to get started
 1. First we have to precompute the slugs using
-    `python manage.py generate_slugs_in_db` 
+    ```python manage.py generate_slugs_in_db``` 
 2. Store some slugs in Redis from database, to enable sluggen to provide an unused slug for each URL using
-    `python manage.py populate_slugs_in_redis`
+    ```python manage.py populate_slugs_in_redis```
 3. Ready to launch the project, do it using
-    `python manage.py runserver`
+    ```python manage.py runserver```
 
 Now your application should start running on port 8000 on your localhost.
 
