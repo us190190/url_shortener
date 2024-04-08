@@ -65,10 +65,15 @@ WSGI_APPLICATION = 'url_shortener.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'url_shortener_db',
+        'USER': 'dbadmin',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',  # Set to the host where your MySQL server is running
+        'PORT': '3306',      # MySQL default port is 3306
     }
 }
+
 
 CACHES = {
     "default": {

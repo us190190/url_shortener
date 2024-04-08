@@ -1,8 +1,8 @@
-from django.conf.urls import url
+from django.urls import re_path
 from .views import compress_url, fetch_url, search_url
 
 urlpatterns = [
-    url(r'^api/compress$', compress_url),
-    url(r'^api/fetch$', fetch_url),
-    url(r'^api/search$', search_url)
+    re_path(r'^api/compress$', compress_url),
+    re_path(r'^api/fetch$', fetch_url),
+    re_path(r'^api/search$', search_url)
 ]

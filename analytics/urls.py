@@ -1,6 +1,6 @@
-from django.conf.urls import url
+from django.urls import re_path
 from .views import get_stats
 
 urlpatterns = [
-    url(r'^api/stats$', get_stats),
+    re_path(r'^api/stats$', get_stats),
 ]

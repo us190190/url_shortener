@@ -14,11 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.conf.urls import url, include
+from django.urls import re_path, include
 
 urlpatterns = [
-    url(r'^', include('analytics.urls')),
-    url(r'^', include('compress.urls'))
+    re_path(r'^', include('analytics.urls')),
+    re_path(r'^', include('compress.urls'))
 ]
 
 # https://bezkoder.com/django-crud-mysql-rest-framework/
